@@ -7,8 +7,9 @@ http.Server(app).listen(port)
 
 app.use(upload());  //Middleware
 
+console.log(`Listening at http://localhost:${port}`);
 app.get("/",function(req,res){
-    res.sendFile(__dirname+'/index.html');
+    res.sendFile(__dirname+'/index');
 })
 
 app.post("/upload", function(req,res){
