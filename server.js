@@ -9,7 +9,7 @@ app.use(upload());  //Middleware
 
 console.log(`Listening at http://localhost:${port}`);
 app.get("/",function(req,res){
-    res.sendFile(__dirname+'/index');
+    res.sendFile(__dirname+'/public/index.html');
 })
 
 app.post("/upload", function(req,res){
