@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <title>Image Histogram</title>
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <h3>
+        <p>This webpage convert your image and generate its histogram</p>
+    </h3>
+    <form id="form1" method="POST" action="upload" enctype="multipart/form-data">   <!--enctype needed--!>
+      <input type='file' name='img' id="imgInp" />
+      <img height = 500 width=500 id="blah" src="#" alt="your image" />
+      <input type='submit' value="upload">
+    </form>
+
+    <div style="position: fixed; bottom: 0;">
+    Tool use in this project<br>
+    (Server): nodejs,expressjs,express-fileupload,opencv,matplotlib<br>
+    (Client): javascript to display user image<br>
+
+    This is demonstration of client server interaction and the use of python image library that is run by nodejs.
+    </div>
+
+</body>
+
+<script>
+function readURL(input) {
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#imgInp").change(function() {
+  readURL(this);
+});
+</script>
+
+</html>
