@@ -1,10 +1,10 @@
 Take your image file and generates it histogram
 
-#Requirement
+#Requirement:
 nodejs
 python3
 
-#Run
+#Run:
 npm install
 pip3 install opencv-python matplotlib
 
