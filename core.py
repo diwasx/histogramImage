@@ -14,7 +14,7 @@ im=im.flatten() #Convert pixel value from two dimension arrary  list
 # im = im.mean(axis=2).flatten() #Convert RGB value from two dimension arrary to list
 plt.hist(im, 255)
 
-plt.savefig('hist.jpg') #Save to file
+plt.savefig('hist.png') #Save to file
 # plt.xlim([0,255]) #set limit of x value
 # plt.show() #Display
 

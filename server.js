@@ -13,7 +13,7 @@ app.get("/",function(req,res){
 })
 
 app.post("/upload", function(req,res){
-    console.log(req.files);
+    // console.log(req.files);
     if(req.files){
         var file=req.files.img,
             img=file.name;
@@ -23,12 +23,22 @@ app.post("/upload", function(req,res){
                 res.send("error occur");
             }
             else{
+
                 //Run python script (core.py) to generate histogram
-                const spawn = require("child_process").spawn;
-                const pythonProcess = spawn('python',['core.py']);
-                const http = require('http')
-                // res.send("Done");
-                res.sendFile(__dirname+'/hist.jpg');
+               
+                // This method doesn't wait for python to finish
+                // const spawn = require("child_process").spawn;
+                // const pythonProcess = spawn('python',['core.py'])
+                // // res.send("Done");
+                // res.sendFile(__dirname+'/hist.png');
+
+                var child = require('child_process').exec('python core.py')
+                child.stdout.pipe(process.stdout)
+                child.on('exit', function() {
+                    // process.exit()
+                    res.sendFile(__dirname+'/hist.png');
+                })
+
             }
         })
     }
